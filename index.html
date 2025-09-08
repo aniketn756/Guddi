@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love!</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); */
+            background: linear-gradient(135deg, #004d40 0%, #008080 100%);
+            min-height: 100vh;
+            overflow: hidden; /* Hide scrollbars */
+            position: relative;
+        }
+
+        /* Heart background animation */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: rotate(45deg);
+            animation: float 10s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(65deg);
+                opacity: 0;
+            }
+        }
+
+        /* Page container styling */
+        .page {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90%;
+            max-width: 500px;
+            padding: 2.5rem 1.5rem; /* Adjusted padding slightly */
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translate(-50%, -50%) translateY(20px) scale(0.95);
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out, visibility 0.6s;
+            max-height: 90vh; /* Set a max height to prevent overflow */
+            overflow-y: auto; /* Allow vertical scrolling within the card */
+            padding-right: 2rem; /* Add padding to account for scrollbar */
+        }
+
+        /* Custom scrollbar for a cleaner look */
+        .page::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .page::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .page::-webkit-scrollbar-thumb {
+            background-color: #00796b;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+        }
+
+        .page::-webkit-scrollbar-thumb:hover {
+            background-color: #004d40;
+        }
+
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) translateY(0) scale(1);
+        }
+
+        h1, h2 {
+            font-family: 'Pacifico', cursive;
+            color: #00796b; /* A deep sea green */
+        }
+
+        p {
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .cute-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Custom button styling */
+        .btn-custom {
+            background-color: #00796b;
+            border-color: #00796b;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 121, 107, 0.4);
+        }
+
+        .btn-custom:hover {
+            background-color: #004d40;
+            border-color: #004d40;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 77, 64, 0.6);
+        }
+
+        /* Image styling */
+        .birthday-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            aspect-ratio: 4 / 3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background hearts will be generated by JavaScript -->
+    <div id="heart-container"></div>
+
+    <!-- Page 1: Main Welcome -->
+    <div id="page1" class="page active">
+        <div class="cute-icon">🎂</div>
+        <h1>Happy Birthday, My Love!</h1>
+        <p>One memory that I carry closest to my heart is — the first late-night talk, and a random laugh we shared. In that moment I remember looking at you and feeling something shift inside me. It was simple but it made me feel like I was exactly where I have to spend my whole life further . With you even the smallest moments become magical. That memory reminds me every day how lucky I am to have you in my life.Always and always blessed to have you as my life partner !!!! ❤️</p>
+        <img src="image1.jpg" alt="A special memory with you" class="birthday-img">
+        <button class="btn btn-custom" onclick="nextPage(2)">Click Me First!</button>
+    </div>
+
+    <!-- Page 2: First Message -->
+    <div id="page2" class="page">
+        <div class="cute-icon">🌟</div>
+        <h2>The Day We Met...</h2>
+        <p>The day we met changed my life in ways I never ever imagined. Indeed we didn't meet it was me who saw you at the college....From the very first moment, there was something about you.....your smile, your energy, your kindness—that made me in love with you even harder...!!! I didn’t know then how deeply you would become a part of me, but looking back, it feels like fate had really been on my side since the day I ever saw you and met you, “Here they are.” I didn’t just meet someone that day—I met the person who would become my favorite everything like each and everything for now and always...!!!</p>
+        <img src="image2.jpg" alt="The day we met" class="birthday-img">
+        <button class="btn btn-custom" onclick="nextPage(3)">Next &rarr;</button>
+    </div>
+
+    <!-- Page 3: Compliment Message -->
+    <div id="page3" class="page">
+        <div class="cute-icon">💖</div>
+        <h2>What I Love About You</h2>
+        <p>There are countless things I love about you,your laugh that fills the room,your fierce heart, the way you care deeply for the people you love,people around you and your ability to find light in the darkest of times.....I love the way you challenge me, support me, and make me want to be a better person. You make love feel effortless,not because it's always easy but because it's always worth it with you.I fall for you by every passing day,every moment we spend together and far.....my love for you isn't just your physical presence but it's really really something more then that.....so yes I love you with all my heart now and always blessed to have you as my life partner ladylove...!!!</p>
+        <img src="image3.jpg" alt="Your beautiful smile" class="birthday-img">
+        <button class="btn btn-custom" onclick="nextPage(4)">And there's more...</button>
+    </div>
+
+    <!-- Page 4: Future Together -->
+    <div id="page4" class="page">
+        <div class="cute-icon">🚀</div>
+        <h2>Our Future Adventures</h2>
+        <p>I dream of a life with you full of wild adventures and quiet moments traveling to places we’ve only seen in movies, getting lost in new cities, trying new foods, dancing in our living room, building a home filled with laughter and love. I can’t wait to see where life takes us next because no matter where we go or what we do as long as I’m with you it will always be the adventure of a lifetime.....I wanna see my beach babe the at the beach with no worries of tomorrow enjoying giggling and laughing and I'll b the most happiest person out there to see you...!!!</p>
+        <img src="image4.jpg" alt="Our future adventures" class="birthday-img">
+        <button class="btn btn-custom" onclick="nextPage(5)">One Last Thing...</button>
+    </div>
+
+    <!-- Page 5: Final Message -->
+    <div id="page5" class="page">
+        <div class="cute-icon">🎉</div>
+        <h2>My Wish For You</h2>
+        <p>On your birthday my wish for you is simple but deep: I hope this year brings you everything your heart desires. I hope you feel loved—so deeply,so constantly,and so unconditionally. I wish you moments of peace when you need rest,wild joy when you need release,and unwavering belief in how incredible you truly are.You deserve the world and more, and I’ll spend my days doing my best to give you just that for a lifetime.....!!!</p>
+        <img src="image5.jpg" alt="Happy Birthday message" class="birthday-img">
+        <button class="btn btn-custom" onclick="nextPage(1)">Restart the Love 💕</button>
+    </div>
+
+    <script>
+        let currentPage = 1;
+
+        function nextPage(pageNumber) {
+            // Find the current active page and remove the active class
+            const currentPageElement = document.getElementById(`page${currentPage}`);
+            if (currentPageElement) {
+                currentPageElement.classList.remove('active');
+            }
+
+            // Find the new page and add the active class
+            const newPageElement = document.getElementById(`page${pageNumber}`);
+            if (newPageElement) {
+                newPageElement.classList.add('active');
+            }
+
+            // Update the current page number
+            currentPage = pageNumber;
+        }
+
+        // --- Background Hearts Animation ---
+        const heartContainer = document.getElementById('heart-container');
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // Randomize properties
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 5 + 5 + 's'; // Between 5s and 10s
+            heart.style.width = Math.random() * 10 + 10 + 'px';
+            heart.style.height = heart.style.width;
+
+            const childSize = parseInt(heart.style.width, 10);
+            const beforeAfterStyles = `
+                width: ${childSize}px;
+                height: ${childSize}px;
+            `;
+            const beforeStyle = `top: -${childSize / 2}px; left: 0;`;
+            const afterStyle = `top: 0; left: -${childSize / 2}px;`;
+
+            // Create a style element for this specific heart to apply pseudo-element styles
+            const style = document.createElement('style');
+            const uniqueClassName = `heart-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            heart.classList.add(uniqueClassName);
+            style.innerHTML = `
+                .${uniqueClassName}::before, .${uniqueClassName}::after { ${beforeAfterStyles} }
+                .${uniqueClassName}::before { ${beforeStyle} }
+                .${uniqueClassName}::after { ${afterStyle} }
+            `;
+            document.head.appendChild(style);
+
+            heartContainer.appendChild(heart);
+
+            // Remove heart from DOM after animation finishes
+            setTimeout(() => {
+                heart.remove();
+                style.remove();
+            }, 10000);
+        }
+
+        // Create hearts at intervals
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
+
